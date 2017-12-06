@@ -133,6 +133,8 @@ func ChromecastTranscode(path string, start, length time.Duration, stderr io.Wri
 		}...)
 	}
 	args = append(args, []string{
+		"-movflags", "frag_keyframe+empty_moov",
+		"-strict", "-2",
 		"-f", "mp4",
 		"pipe:"}...)
 	return transcodePipe(args, stderr)
